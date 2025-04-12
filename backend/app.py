@@ -1,10 +1,12 @@
-
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 import os
 import uuid
 
 app = Flask(__name__, static_folder='static')
+CORS(app)  # 🔥 Activa CORS para permitir conexiones desde el frontend (Vercel)
 
+# Base de datos en memoria
 requests_db = {}
 
 @app.route("/create-request", methods=["POST"])
